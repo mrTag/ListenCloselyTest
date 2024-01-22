@@ -1,0 +1,11 @@
+[configuration]
+entry_symbol = "GDExtensionInit"
+compatibility_minimum = 4.1
+
+[icons]
+Example = "icons/Example.svg"
+
+[libraries]
+linux.x86_64 = "lib/Linux-x86_64/libListenClosely.so"
+macos = "lib/Darwin-universal/libListenClosely.dylib"
+windows.x86_64 = "lib/Windows-AMD64/ListenClosely.dll"
