@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8ymeg8y0k45v"]
+[gd_scene load_steps=4 format=3 uid="uid://c8ymeg8y0k45v"]
 
-[ext_resource type="PackedScene" uid="uid://cn6psor2sltmj" path="res://player.tscn" id="1_tqsbe"]
+[ext_resource type="Script" path="res://Game.gd" id="1_obh6g"]
 
-[node name="Mainscene" type="Node3D"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_sacj8"]
 
-[node name="Player" parent="." instance=ExtResource("1_tqsbe")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2ja3"]
+albedo_color = Color(0, 0.537255, 0.556863, 1)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.556544)
+[node name="Game" type="Node3D"]
+script = ExtResource("1_obh6g")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn")
+spawn_path = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.625, 0, 0, 0, 1.23, 0, 0, 0, 2.515, 0, -1.63999, 0)
+mesh = SubResource("PlaneMesh_sacj8")
+surface_material_override/0 = SubResource("StandardMaterial3D_m2ja3")
