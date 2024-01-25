@@ -1,6 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8ymeg8y0k45v"]
+[gd_scene load_steps=7 format=3 uid="uid://c8ymeg8y0k45v"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_obh6g"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_45s6e"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_yb5tr"]
+sky_material = SubResource("ProceduralSkyMaterial_45s6e")
+
+[sub_resource type="Environment" id="Environment_rf4c5"]
+background_mode = 2
+sky = SubResource("Sky_yb5tr")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sacj8"]
 
@@ -9,6 +22,9 @@ albedo_color = Color(0, 0.537255, 0.556863, 1)
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_obh6g")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rf4c5")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://player.tscn")
